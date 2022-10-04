@@ -6,7 +6,7 @@
 #    By: scartage <scartage@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 15:40:55 by scartage          #+#    #+#              #
-#    Updated: 2022/10/04 15:41:54 by scartage         ###   ########.fr        #
+#    Updated: 2022/10/04 20:58:47 by scartage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ INCLUDES_H	=	minilibx_macos/mlx.h	\
 				sources/so_long.h 			\
 				sources/GNL/get_next_line.h \
 
-SRCS		= 
+SRCS		= main.c aux_errores.c \
+			  get_next_line.c		get_next_line_utils.c
+
 INCLUDES 	= libft/libft.a minilibx_macos/libmlx.a
 
 OBJ_DIR		= obj
