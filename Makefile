@@ -6,7 +6,7 @@
 #    By: scartage <scartage@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 15:40:55 by scartage          #+#    #+#              #
-#    Updated: 2022/10/04 20:58:47 by scartage         ###   ########.fr        #
+#    Updated: 2022/10/10 17:48:46 by scartage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ INCLUDES_H	=	minilibx_macos/mlx.h	\
 				sources/GNL/get_next_line.h \
 
 SRCS		= main.c aux_errores.c \
-			  get_next_line.c		get_next_line_utils.c
+			  get_next_line.c		get_next_line_utils.c get_line.c \
+			  check_map.c
 
 INCLUDES 	= libft/libft.a minilibx_macos/libmlx.a
 

@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:06:21 by scartage          #+#    #+#             */
-/*   Updated: 2022/05/04 17:37:02 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:41:53 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ char	*save_next_line(char	*save)
 	return (str);
 }
 
-
 char	*goto_read(int fd, char	*save)
 {
 	int		checker;
@@ -103,5 +102,5 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = make_line(save);
 	save = save_next_line(save);
-	return (save);
+	return (line);
 }

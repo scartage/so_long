@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:07:23 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/04 20:57:12 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/10 19:37:34 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,23 @@
 typedef struct
 {
 	char	**map;
-}		t_vars;
+	int		height;
+	int		width;
+	int		col;
+	int		exit;
+	int		s_pos;
+}	t_vars;
 
 /*Funcion auxiliar para casos de errores
  * Esta en aux_errores.c	*/
 int ft_perror(char	*str);
 
 /*Funciones*/
-char **read_map(char *in_map);
-char **push(char **array, char *str);
+char	**read_file(char *in_map);
+char	**push(char **array, char *str);
+
+int		ft_check_map(t_vars *vars);
+int		ft_no_saltos(char *line);
+int		ft_check_chars(t_vars *vars);
+int		ft_inside_one(t_vars *vars);
 #endif

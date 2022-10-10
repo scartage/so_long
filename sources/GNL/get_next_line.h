@@ -6,14 +6,14 @@
 /*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:04:47 by scartage          #+#    #+#             */
-/*   Updated: 2022/05/04 18:39:39 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:40:58 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFFER_SIZE 5000
+# define BUFFER_SIZE 50
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -29,9 +29,4 @@ char	*get_next_line(int fd);
 char	*goto_read(int fd, char	*save);
 char	*make_line(char			*save);
 char	*save_next_line(char	*save);
-
-/*funcion especialmente disenada para el fdf*/
-
-char	*get_line(int fd);
-
 #endif
