@@ -6,30 +6,30 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:45:39 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/10 20:26:59 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/11 20:49:41 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-/*Funcion que revisa que no hayan dobles saltos de linea
- * se llama a la hora de leer el file
- * NO FUNCIONA, OJO*/
-int ft_no_saltos(char *line)
+int ft_is_rectangle(t_vars *vars)
 {
-	int i = 0;
+	size_t	size;
+	int		i;
 
-	while (1)
+	size = vars->width;
+	i = 0;
+	while (i < vars->height)
 	{
-		if (line[i] == '\n' && line[i + 1] == '\n')
+		if (size != ft_strlen(vars->map[i]) - 1)
 			return (1);
-		if (line[i] == '\0')
-			break;
 		i++;
 	}
+	if (vars->height == vars->width)
+		return (1);
 	return (0);
 }
+
 
 /*Para revisar que solo hayan caracteres validos*/
 int ft_only_chars(t_vars *vars)
@@ -61,25 +61,29 @@ int ft_only_chars(t_vars *vars)
 int	ft_check_chars(t_vars *vars)
 {
 	int x;
-	int j;
+	int y;
 
-	x = 0;
-	while (x < vars->height)
+	y = 0;
+	while (y < vars->height)
 	{
-		j = 0;
-		while (j < vars->width)
+		x = 0;
+		while (x < vars->width)
 		{
-			if (vars->map[x][j] == 'C')
+			if (vars->map[y][x] == 'C')
 				vars->col = vars->col + 1;
-			else if (vars->map[x][j] == 'E')
+			else if (vars->map[y][x] == 'E')
 				vars->exit = vars->exit + 1;
-			else if (vars->map[x][j] == 'P')
+			else if (vars->map[y][x] == 'P')
+			{
 				vars->s_pos = vars->s_pos + 1;
-			j++;
+				vars->px = x;
+				vars->py = y;
+			}
+			x++;
 		}
-		x++;
+		y++;
 	}
-	if (vars->col == 1 && vars->exit == 1 && vars->s_pos == 1)
+	if (vars->exit == 1 && vars->s_pos == 1)
 		return (0);
 	else
 		return (1);
@@ -113,15 +117,21 @@ int ft_inside_one(t_vars *vars)
 	return (0);
 }
 
+/*Funcion que da paso a otras funciones para revisar casos de error del mapa
+ * el primero revisa que solo hayan los caracteres obligatiorios {0,1,C,E,P}
+ * la segunda revisa que solo haya 1E, 1C, 1P
+ * la tercera revisa que el mapa este cerrados por '1'*/
 int ft_check_map(t_vars *vars)
-{
-	/*if (ft_no_saltos(vars) == 1)
-		ft_perror("Error: mapa invalido\n");*/
+{	
 	if (ft_only_chars(vars) == 1)
-		ft_perror("Error: mapa incorrecto, posiblemete chars no validos\n");
+		ft_perror_map();
 	if (ft_check_chars(vars) == 1)
-		ft_perror("Error: solo puede haber: 1E, 1P, 1C");
+		ft_perror_map();
 	if (ft_inside_one(vars) == 1)
 		ft_perror("Error: el mapa tiene que estar bordeado de 1\n");
+	if (ft_is_rectangle(vars) == 1)
+		ft_perror("Error: el mapa tiene que ser rectangular\n");
+	if (ft_is_playable(vars) == 1)
+		ft_perror("Error: el mapa no es jugable\n");
 		return (0);
 }

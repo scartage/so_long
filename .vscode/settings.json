@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/Users/scartage/Documents/GitHub/so_long",
+            "binaryPath": "/Users/scartage/Documents/GitHub/so_long/so_long",
+            "binaryArgs": ["/Users/scartage/Documents/GitHub/so_long/maps/map_8_lines.ber"]
+        }
+    ]
+}

@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:11:38 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/10 19:56:09 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/11 21:02:13 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ char	**read_file(char *file)
 	while(1)
 	{
 		line = get_next_line(fd);
-	/*	if (ft_no_saltos(line) == 1)
-			ft_perror("Error: hay mas de un salto de linea\n");*/
+		if (i == 0 && line == NULL)
+			ft_perror_map();
 		if (line != NULL)
 			map = push(map, line);
 		else
@@ -93,15 +93,16 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		ft_perror("Error: ./so_long map.ber\n");
-	ft_check_ext_file(av[1]);		//revisamos extension
-	vars.map = read_file(av[1]);	//llenamos el mapa
-	vars.height = count_array(vars.map); //para saber el alto
-	vars.width = (ft_strlen(vars.map[0]) - 1);
+	ft_check_ext_file(av[1]);					//revisamos extension
+	vars.map = read_file(av[1]);				//llenamos el mapa
+	vars.map_copy = read_file(av[1]);
+	vars.height = count_array(vars.map);		//sacamos el alto
+	vars.width = (ft_strlen(vars.map[0]) - 1);	//sacamos el ancho
 
-	ft_check_map(&vars);			//revisamos el mapa
-
+	if (ft_check_map(&vars) == 0)
+		printf("los mapas pasan los parametros\n"); //revisamos el mapa
 	/*Bucle temporal, para mostrar si se lee bien el mapa*/
-
+	printf("mapa original\n");
 	while (1)
 	{	
 		if (vars.map[i] != NULL)
@@ -112,6 +113,21 @@ int	main(int ac, char **av)
 		else
 			break;
 	}
+	printf("alto: %i, ancho: %i, coleccionables: %i\n", vars.height, vars.width, vars.col);
+	
+	printf("mapa copia\n");
+	i = 0;
+	while (1)
+	{	
+		if (vars.map_copy[i] != NULL)
+		{
+			printf("%i: %s", i, vars.map_copy[i]);
+			i++;
+		}
+		else
+			break;
+	}
 
+	printf("la posicion de P es: (%i, %i)\n", vars.px, vars.py);
 	return (0);
 }
