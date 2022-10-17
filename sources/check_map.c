@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:45:39 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/11 20:49:41 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/17 18:41:35 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int	ft_check_chars(t_vars *vars)
 			else if (vars->map[y][x] == 'P')
 			{
 				vars->s_pos = vars->s_pos + 1;
-				vars->px = x;
-				vars->py = y;
+				vars->px = y;
+				vars->py = x;
 			}
 			x++;
 		}
@@ -122,7 +122,10 @@ int ft_inside_one(t_vars *vars)
  * la segunda revisa que solo haya 1E, 1C, 1P
  * la tercera revisa que el mapa este cerrados por '1'*/
 int ft_check_map(t_vars *vars)
-{	
+{
+	vars->height = count_array(vars->map);		//sacamos el alto
+	vars->width = (ft_strlen(vars->map[0]) - 1);	//sacamos el ancho
+
 	if (ft_only_chars(vars) == 1)
 		ft_perror_map();
 	if (ft_check_chars(vars) == 1)

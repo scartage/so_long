@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:07:23 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/11 20:42:30 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/17 19:49:34 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,20 @@
 #include "GNL/get_next_line.h"
 #include <stdio.h>		//para usar el perror, printf
 #include <fcntl.h>		/*Para el O_RDONLY de el open*/
-#include <stdlib.h>		//para usar el exit
+#include <stdlib.h>		//para usar el exit y el free
 
+typedef struct
+{
+	void	*img_ptr;
+	void	*data;
+	int		bbp;
+	int		length;
+	int		endian;
+}	t_img;
 
-//de momento vamos a rellenar el mapa con lo que nos pasen
+/*estructura donde tenemos varias variables para usar el programa
+ * hay un mapa original, que es el que se usa, una copia para revisar
+ * si el mapa es jugable*/
 typedef struct
 {
 	char	**map;
@@ -29,15 +39,20 @@ typedef struct
 
 	int		height;
 	int		width;
+	
+	int		px;
+	int		py;
+	int		s_pos;
 
 	int		col;
 	int		exit;
-	int		s_pos;
 
 	int		col_copy;
 	int		exit_copy;
-	int		px;
-	int		py;
+
+	void	*mlx
+	void	*win_ptr
+	t_img	*imgs;
 }	t_vars;
 
 /*Funcion auxiliar para casos de errores
@@ -45,6 +60,7 @@ typedef struct
  * ft_perror_map para mapas invalidos*/
 int ft_perror(char	*str);
 void ft_perror_map();
+int	count_array(char **array);
 
 /*Funciones para leer el file y crear el mapa*/
 char	**read_file(char *in_map);

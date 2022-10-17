@@ -1,0 +1,31 @@
+/*Bucle temporal, para mostrar si se lee bien el mapa*/
+	/*printf("mapa original\n");
+	 *
+	 * OJO, en el check_playable al final, si todo sale bien se libera memoria
+	 * en caso de querer printrar el mapa por pantalla, comentar esa parte.
+	while (1)
+	{
+		if (vars.map[i] != NULL)
+		{
+			printf("%i: %s", i, vars.map[i]);
+			i++;
+		}
+		else
+			break;
+	}
+	printf("alto: %i, ancho: %i, coleccionables: %i\n", vars.height, vars.width, vars.col);
+
+	printf("mapa copia\n");
+	i = 0;
+	while (1)
+	{
+		if (vars.map_copy[i] != NULL)
+		{
+			printf("%i: %s", i, vars.map_copy[i]);
+			i++;
+		}
+		else
+			break;
+	}
+
+	printf("la posicion de P es: (%i, %i)\n", vars.px, vars.py);*/
