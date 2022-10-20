@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:45:39 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/17 18:41:35 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:21:19 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	ft_check_chars(t_vars *vars)
 	int y;
 
 	y = 0;
+	vars->col = 0;
 	while (y < vars->height)
 	{
 		x = 0;

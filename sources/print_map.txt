@@ -1,8 +1,8 @@
 /*Bucle temporal, para mostrar si se lee bien el mapa*/
-	/*printf("mapa original\n");
-	 *
-	 * OJO, en el check_playable al final, si todo sale bien se libera memoria
+	 
+	 OJO, en el check_playable al final, si todo sale bien se libera memoria
 	 * en caso de querer printrar el mapa por pantalla, comentar esa parte.
+	printf("mapa original\n");
 	while (1)
 	{
 		if (vars.map[i] != NULL)

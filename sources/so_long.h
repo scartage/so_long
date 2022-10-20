@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:07:23 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/17 19:49:34 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:28:08 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@
 #include <fcntl.h>		/*Para el O_RDONLY de el open*/
 #include <stdlib.h>		//para usar el exit y el free
 
+# define SIZE 32
+/*Estructura para la tener diferentes variables en imgs*/
 typedef struct
 {
 	void	*img_ptr;
 	void	*data;
-	int		bbp;
-	int		length;
+	int		bpp;
+	int		size;
 	int		endian;
 }	t_img;
 
@@ -50,8 +52,8 @@ typedef struct
 	int		col_copy;
 	int		exit_copy;
 
-	void	*mlx
-	void	*win_ptr
+	void	*mlx;
+	void	*win_ptr;
 	t_img	*imgs;
 }	t_vars;
 
@@ -65,6 +67,10 @@ int	count_array(char **array);
 /*Funciones para leer el file y crear el mapa*/
 char	**read_file(char *in_map);
 char	**push(char **array, char *str);
+
+/*Funciones para inicializar imagenes para la minilibx*/
+void	reading_imgs(t_vars *vars);
+void	keep_reading_imgs(t_vars *vars, int height, int width);
 
 /*Funciones para comprobar que el mapa sea correcto*/
 int		ft_check_map(t_vars *vars);
