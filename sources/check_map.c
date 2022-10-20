@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:45:39 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/18 20:21:19 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/20 21:40:31 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,12 @@ int ft_inside_one(t_vars *vars)
  * la tercera revisa que el mapa este cerrados por '1'*/
 int ft_check_map(t_vars *vars)
 {
+	/*vars->height = ft_strlen(vars->map[0] - 1);		//sacamos el alto
+	vars->width = count_array(vars->map);	//sacamos el ancho*/
+
+	
 	vars->height = count_array(vars->map);		//sacamos el alto
-	vars->width = (ft_strlen(vars->map[0]) - 1);	//sacamos el ancho
+	vars->width = (ft_strlen(vars->map[0]) - 1);	//sacamos el ancho``
 
 	if (ft_only_chars(vars) == 1)
 		ft_perror_map();

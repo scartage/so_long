@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:11:38 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/18 20:31:59 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/20 21:47:55 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	main(int ac, char **av)
 	vars.mlx = mlx_init();
 	reading_imgs(&vars);
 
-	vars.win_ptr = mlx_new_window(vars.mlx, vars.width * SIZE, vars.height * SIZE, "don't panic, it's just so_long");
+	printf("height:%i, width:%i\n", vars.height * SIZE, vars.width * SIZE);
+	vars.win_ptr = mlx_new_window(vars.mlx, vars.width * SIZE, vars.height * SIZE , "don't panic, it's just so_long");
+	print_game_map(&vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }
