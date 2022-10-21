@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:07:23 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/18 20:28:08 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:39:23 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct
 	int		px;
 	int		py;
 	int		s_pos;
+	int		n_pos;
 
 	int		col;
 	int		exit;
@@ -72,13 +73,23 @@ char	**push(char **array, char *str);
 void	reading_imgs(t_vars *vars);
 void	keep_reading_imgs(t_vars *vars, int height, int width);
 
-/*Funciones para comprobar que el mapa sea correcto*/
+/*Funciones para comprobar que el mapa sea correcto (casos de error)*/
 int		ft_check_map(t_vars *vars);
 int		ft_no_saltos(char *line);
 int		ft_check_chars(t_vars *vars);
 int		ft_inside_one(t_vars *vars);
 int		ft_is_rectangle(t_vars *vars);
 
+/*para revisar que el mapa sea jugable*/
 int		ft_is_playable(t_vars	*vars);
 void	validate_path(t_vars *vars, int px, int py);
+
+/*funciones varias pasa usar con el mapa y la minilibx*/
+int print_game_map(t_vars *vars);
+int player_movs(int key_symbol, t_vars *vars);
+
+/*Funciones para liberar*/
+int free_memory(t_vars *vars);
+void ft_clean_map_copy(t_vars *vars);
+void clean_map(t_vars *vars);
 #endif

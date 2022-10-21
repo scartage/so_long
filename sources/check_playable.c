@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:02:10 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/18 20:22:55 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:18:23 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,7 @@ void	validate_path(t_vars *vars, int px, int py)
 	validate_path(vars, px, py + 1);
 }
 
-void ft_clean_map_copy(t_vars *vars)
-{
-	int i;
-	int alto;
-
-	i = 0;
-	alto = vars->height + 1;
-	while (i < alto)
-	{
-		if (vars->map_copy[i])
-			free(vars->map_copy[i]);
-		i++;
-	}
-	free(vars->map_copy);
-	vars->map_copy = NULL;
-}
-
+/*la copia del mapa con la que comprobamos si es jugable no se libera hasta el final*/
 int		ft_is_playable(t_vars	*vars)
 {
 	vars->col_copy = 0;
@@ -57,7 +41,5 @@ int		ft_is_playable(t_vars	*vars)
 		return (1);
 	if (vars->exit_copy != 1)
 		return (1);
-	else
-		ft_clean_map_copy(vars);
 	return (0);
 }

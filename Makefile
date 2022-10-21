@@ -6,7 +6,7 @@
 #    By: scartage <scartage@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 15:40:55 by scartage          #+#    #+#              #
-#    Updated: 2022/10/18 19:52:43 by scartage         ###   ########.fr        #
+#    Updated: 2022/10/21 17:29:26 by scartage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,9 @@ INCLUDES_H	=	minilibx_macos/mlx.h	\
 
 SRCS		= main.c aux_errores.c \
 			  get_next_line.c		get_next_line_utils.c get_line.c \
-			  make_map.c check_map.c	check_playable.c		\
-			  reading_imgs_to_mini.c
+			  make_map.c check_map.c check_playable.c		\
+			  reading_imgs_to_mini.c map_functions.c	\
+			  movements.c free_all.c
 
 INCLUDES 	= libft/libft.a minilibx_macos/libmlx.a
 
