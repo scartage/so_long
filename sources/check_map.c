@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:45:39 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/20 21:40:31 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:28:35 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	ft_check_chars(t_vars *vars)
 
 	y = 0;
 	vars->col = 0;
+	vars->s_pos = 0;
 	while (y < vars->height)
 	{
 		x = 0;
@@ -87,7 +88,10 @@ int	ft_check_chars(t_vars *vars)
 	if (vars->exit == 1 && vars->s_pos == 1)
 		return (0);
 	else
+	{
+		printf("hay tantos C:%i, salida:%i, puerta:%i\n", vars->col, vars->exit, vars->s_pos);
 		return (1);
+	}
 }
 
 /*Funcion para revisar que el mapa esta bordeado correctamente*/
@@ -132,9 +136,15 @@ int ft_check_map(t_vars *vars)
 	vars->width = (ft_strlen(vars->map[0]) - 1);	//sacamos el ancho``
 
 	if (ft_only_chars(vars) == 1)
+	{
+		printf("mmm");
 		ft_perror_map();
+	}
 	if (ft_check_chars(vars) == 1)
+	{
+		printf("aaa");
 		ft_perror_map();
+	}
 	if (ft_inside_one(vars) == 1)
 		ft_perror("Error: el mapa tiene que estar bordeado de 1\n");
 	if (ft_is_rectangle(vars) == 1)

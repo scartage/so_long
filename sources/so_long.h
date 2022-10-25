@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:07:23 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/21 17:39:23 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/25 21:09:19 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ typedef struct
 
 	int		height;
 	int		width;
-	
+
+	int		counter;
 	int		px;
 	int		py;
-	int		s_pos;
+	char	player;
+	int		s_pos;		//start pos, tiene que ser 1
 	int		n_pos;
 
 	int		col;
@@ -87,6 +89,8 @@ void	validate_path(t_vars *vars, int px, int py);
 /*funciones varias pasa usar con el mapa y la minilibx*/
 int print_game_map(t_vars *vars);
 int player_movs(int key_symbol, t_vars *vars);
+int which_key(int key_symbol);
+int must_not_move(t_vars *vars);
 
 /*Funciones para liberar*/
 int free_memory(t_vars *vars);

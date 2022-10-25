@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 21:26:54 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/21 15:53:12 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/25 21:11:54 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@
 /*Funcion para imprimir a el jugador segun donde este y como este mirando (AWSD)*/
 void print_map_player(t_vars *vars, int x, int y)
 {
-	/*esto hay que revisar que este en el orden correcto*/
 	vars->px = x;
 	vars->py = y;
 	/*arriba*/
-	if (vars->s_pos == 'W')
+
+	printf("EL S_POS ES: %c\n", vars->player);
+	if (vars->player == 'W')
 		mlx_put_image_to_window(vars->mlx, vars->win_ptr, vars->imgs[3].img_ptr, (y * SIZE), (x * SIZE));
-	else if (vars->s_pos == 'S')
+	else if (vars->player == 'S')
 		mlx_put_image_to_window(vars->mlx, vars->win_ptr, vars->imgs[5].img_ptr, (y * SIZE), (x * SIZE));
-	else if (vars->s_pos == 'A')
+	else if (vars->player == 'A')
 		mlx_put_image_to_window(vars->mlx, vars->win_ptr, vars->imgs[6].img_ptr, (y * SIZE), (x * SIZE));
 	else
 		mlx_put_image_to_window(vars->mlx, vars->win_ptr, vars->imgs[7].img_ptr, (y * SIZE), (x * SIZE));
@@ -42,7 +43,7 @@ void print_more_map(t_vars *vars, int x, int y)
 	}
 }
 
-/*esta funcion nos muestra por pantalla las imagenes para crear el juego*/
+/*esta funcion nos muestra por pantalla las imagenes en la ventana para crear el juego*/
 int print_game_map(t_vars *vars)
 {
 	int x;
