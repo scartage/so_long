@@ -6,18 +6,20 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:03:54 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/21 17:21:47 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:21:25 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*funcion para cerrar la ventana y salir del programa*/
 void destroy_img(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win_ptr);
 	exit (0);
 }
 
+/*Funcion para liberar de manera "limpia" */
 void ft_clean_map(t_vars *vars)
 {
 	int alto;

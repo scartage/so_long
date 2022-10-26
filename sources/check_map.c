@@ -6,12 +6,15 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:45:39 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/25 20:28:35 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:13:15 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+/*Funcion que recorre el mapa para ver si es rectangular
+ * se recorre por lineas de alto, comparando que size (el ancho) sea igual
+ * a la forma en la que se saca el ancho. Si en algun momento es diferente es porque
+ * hay un error. El ancho NO puede ser igual alto, porque seria un cuadrado.*/
 int ft_is_rectangle(t_vars *vars)
 {
 	size_t	size;
@@ -57,7 +60,7 @@ int ft_only_chars(t_vars *vars)
 	return (0);
 }
 
-/*Funcion para revisar que solo haya 1 EPC*/
+/*Funcion para revisar que solo haya 1 Exit y 1 posicion inicial*/
 int	ft_check_chars(t_vars *vars)
 {
 	int x;
@@ -88,10 +91,7 @@ int	ft_check_chars(t_vars *vars)
 	if (vars->exit == 1 && vars->s_pos == 1)
 		return (0);
 	else
-	{
-		printf("hay tantos C:%i, salida:%i, puerta:%i\n", vars->col, vars->exit, vars->s_pos);
 		return (1);
-	}
 }
 
 /*Funcion para revisar que el mapa esta bordeado correctamente*/
@@ -107,9 +107,8 @@ int ft_inside_one(t_vars *vars)
 			return (1);
 		x++;
 	}
-	if (x != vars->width)
+	if (x != vars->width)	//la x tiene que ser igual al ancho
 		return (1);
-
 	j = 0;
 	while (j < vars->height)
 	{
@@ -117,7 +116,7 @@ int ft_inside_one(t_vars *vars)
 			return (1);
 		j++;
 	}
-	if (j != vars->height)
+	if (j != vars->height)	//la j tiene que ser igual alto
 		return (1);
 	return (0);
 }
@@ -127,24 +126,14 @@ int ft_inside_one(t_vars *vars)
  * la segunda revisa que solo haya 1E, 1C, 1P
  * la tercera revisa que el mapa este cerrados por '1'*/
 int ft_check_map(t_vars *vars)
-{
-	/*vars->height = ft_strlen(vars->map[0] - 1);		//sacamos el alto
-	vars->width = count_array(vars->map);	//sacamos el ancho*/
-
-	
+{	
 	vars->height = count_array(vars->map);		//sacamos el alto
 	vars->width = (ft_strlen(vars->map[0]) - 1);	//sacamos el ancho``
 
 	if (ft_only_chars(vars) == 1)
-	{
-		printf("mmm");
 		ft_perror_map();
-	}
 	if (ft_check_chars(vars) == 1)
-	{
-		printf("aaa");
 		ft_perror_map();
-	}
 	if (ft_inside_one(vars) == 1)
 		ft_perror("Error: el mapa tiene que estar bordeado de 1\n");
 	if (ft_is_rectangle(vars) == 1)

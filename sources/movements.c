@@ -6,18 +6,24 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:27:36 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/25 21:39:43 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/26 20:07:22 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*Con esta funcion lo que hacemos es poner en 0 la poscion actual donde estoy
+ * para sumarle o restarte una pos segun a donde quiero ir.
+ * una vez tengo la nueva "direccion" la defino como pos incial, asi cuando print_map
+ * vuelva a hacer el recorrido muestre al personaje en la nueva posicion.
+ * Hay que definir player, para que cuando el printf ponga las imagenes sea acorde a la
+ * direccion a donde se quiere mover.*/
 void now_move_up_down(t_vars *vars)
 {
 	if (vars->n_pos == 'W')
 	{
 		vars->counter = vars->counter + 1;
-		printf("moves counter: %i\n", vars->counter);
+		printf("moves counter: %i\n", vars->counter);	
 		vars->map[vars->px][vars->py] = '0';
 		vars->px =  vars->px - 1;
 		vars->map[vars->px][vars->py] = 'P';
@@ -90,23 +96,22 @@ int which_key(int key_symbol)
  * Si lo que devulve la funcion es un -1 salimos del programa de forma limpia.*/
 int player_movs(int key_symbol, t_vars *vars)
 {
-	//vars->counter = 0;
 	//printf("the key:%i", key_symbol);
 	vars->n_pos = which_key(key_symbol);
 	if (vars->n_pos < 0)
 		free_memory(vars);
-	printf("tecla: %c coleccionables: %i\n", vars->n_pos, vars->col);
+//	printf("tecla: %c coleccionables: %i\n", vars->n_pos, vars->col);
 	if (must_not_move(vars) == -1)
 	{
-		printf("han habido problemas\n");
+		//printf("han habido problemas\n");
 		return (-1);
 	}
 	if (is_finished(vars) == 0)
 	{
-		printf("YOU WON!!");
+		mlx_string_put(vars->mlx, vars->win_ptr, vars->px, vars->py, 0x0000FF00 , "YOU WON!!!");	
 		return (0);
 	}
-	printf("col: %i\n", vars->col);
+	//printf("col: %i\n", vars->col);
 	now_move_up_down(vars);
 	now_move_iz_dr(vars);
 	print_game_map(vars);

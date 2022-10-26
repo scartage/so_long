@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:07:23 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/25 21:09:19 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/26 21:40:17 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 #include "../libft/libft.h"
 #include "../minilibx_macos/mlx.h"
 #include "GNL/get_next_line.h"
+#include "ft_printf/ft_printf.h"
 #include <stdio.h>		//para usar el perror, printf
 #include <fcntl.h>		/*Para el O_RDONLY de el open*/
 #include <stdlib.h>		//para usar el exit y el free
 
-# define SIZE 32
+# define SIZE 50
 /*Estructura para la tener diferentes variables en imgs*/
 typedef struct
 {

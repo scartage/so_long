@@ -6,12 +6,14 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:02:10 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/21 17:18:23 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:04:47 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*Consiste en recorrer el mapa desde la posicion P, donde vayamos pasando ponemos un 1
+ * donde haya un 1 no se puede pasar, la idea es ir recogiendo coleccionables*/
 void	validate_path(t_vars *vars, int px, int py)
 {
 	if (vars->map_copy[px][py] == '1')
@@ -31,7 +33,9 @@ void	validate_path(t_vars *vars, int px, int py)
 	validate_path(vars, px, py + 1);
 }
 
-/*la copia del mapa con la que comprobamos si es jugable no se libera hasta el final*/
+/*la copia del mapa con la que comprobamos si es jugable no se libera hasta el final
+ * se comprueba comparando cuantos coleccionables hay en el mapa real y la copia
+ * y viendo que solo haya una salida*/
 int		ft_is_playable(t_vars	*vars)
 {
 	vars->col_copy = 0;

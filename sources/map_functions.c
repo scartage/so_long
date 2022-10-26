@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 21:26:54 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/25 21:11:54 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:14:43 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void print_map_player(t_vars *vars, int x, int y)
 	vars->py = y;
 	/*arriba*/
 
-	printf("EL S_POS ES: %c\n", vars->player);
 	if (vars->player == 'W')
 		mlx_put_image_to_window(vars->mlx, vars->win_ptr, vars->imgs[3].img_ptr, (y * SIZE), (x * SIZE));
 	else if (vars->player == 'S')

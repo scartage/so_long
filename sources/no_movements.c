@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:31:10 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/25 19:27:24 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/26 21:28:14 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@
  * en caso de que haya un coleccionable lo "toma"*/
 static int must_not_W(t_vars *vars)
 {
-	if (vars->map[vars->px - 1][vars->py] == '1' ||
-			vars->map[vars->px - 1][vars->py] == 'E')
+	if (vars->map[vars->px - 1][vars->py] == '1')
 		return (-1);
+	else if (vars->map[vars->px - 1][vars->py] == 'E')
+	{
+		if (vars->col != 0)
+		{
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px, vars->py, 0x0000FF00 , "take first all the collectibles");
+			return (-1);	
+		}
+	}
 	else if (vars->map[vars->px - 1][vars->py] == 'C')
 	{
 		vars->col--;
@@ -29,9 +36,16 @@ static int must_not_W(t_vars *vars)
 
 static int must_not_S(t_vars *vars)
 {
-	if (vars->map[vars->px + 1][vars->py] == '1' ||
-			vars->map[vars->px + 1][vars->py] == 'E')
+	if (vars->map[vars->px + 1][vars->py] == '1')
 		return (-1);
+	else if (vars->map[vars->px + 1][vars->py] == 'E')
+	{
+		if (vars->col != 0)
+		{
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px, vars->py, 0x0000FF00 , "take first all the collectibles");
+			return (-1);
+		}
+	}
 	else if (vars->map[vars->px + 1][vars->py] == 'C')
 	{
 		vars->col--;
@@ -43,9 +57,16 @@ static int must_not_S(t_vars *vars)
 
 static int must_not_A(t_vars *vars)
 {
-	if (vars->map[vars->px][vars->py - 1] == '1' ||
-			vars->map[vars->px][vars->py - 1] == 'E')
+	if (vars->map[vars->px][vars->py - 1] == '1')
 		return (-1);
+	else if (vars->map[vars->px][vars->py - 1] == 'E')
+	{
+		if (vars->col != 0)
+		{
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px, vars->py, 0x0000FF00 , "take first all the collectibles");
+			return (-1);
+		}
+	}
 	else if (vars->map[vars->px][vars->py - 1] == 'C')
 	{
 		vars->col--;
@@ -56,9 +77,16 @@ static int must_not_A(t_vars *vars)
 
 static int must_not_D(t_vars *vars)
 {
-	if (vars->map[vars->px][vars->py + 1] == '1' ||
-			vars->map[vars->px][vars->py + 1] == 'E')
+	if (vars->map[vars->px][vars->py + 1] == '1')
 		return (-1);
+	else if (vars->map[vars->px][vars->py + 1] == 'E')
+	{
+		if (vars->col != 0)
+		{
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px, vars->py, 0x0000FF00 , "take first all the collectibles");
+			return (-1);
+		}
+	}
 	else if (vars->map[vars->px][vars->py + 1] == 'C')
 	{
 		vars->col--;
