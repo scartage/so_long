@@ -6,12 +6,12 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:11:38 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/26 19:18:36 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/28 20:14:05 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+#include <string.h>
 int	main(int ac, char **av)
 {
 	t_vars vars;
@@ -22,11 +22,9 @@ int	main(int ac, char **av)
 	vars.map_copy = read_file(av[1]);			//llenamos map_copy
 
 	if (ft_check_map(&vars) == 0)
-		printf("los mapas pasan los parametros\n"); //revisamos el mapa
+		ft_printf("el mapa pasa los parametros\n"); //revisamos el mapa
 	vars.mlx = mlx_init();
 	reading_imgs(&vars);
-
-	printf("height:%i, width:%i\n", vars.height * SIZE, vars.width * SIZE);
 	vars.win_ptr = mlx_new_window(vars.mlx, vars.width * SIZE, vars.height * SIZE , "don't panic, it's just so_long");
 	print_game_map(&vars);
 
@@ -35,6 +33,6 @@ int	main(int ac, char **av)
 	mlx_hook(vars.win_ptr, 17, 0, free_memory, &vars);	//este evento se encarga de cerrar si se aprieta la (x)
 
 	mlx_loop(vars.mlx);
-	free_memory(&vars);	//si no se llega a cerrar con la (x) el programa se sale despues de cerrar loop (movs)
+	free_memory(&vars);	//si no se llega a cerrar con la (x) el programa se sale despues de cerrar loop (movs)*/
 	return (0);
 }

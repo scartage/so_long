@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:07:23 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/26 21:40:17 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:45:08 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 #include "../minilibx_macos/mlx.h"
 #include "GNL/get_next_line.h"
 #include "ft_printf/ft_printf.h"
-#include <stdio.h>		//para usar el perror, printf
+//# include <stdio.h>		//para usar el perror, printf
 #include <fcntl.h>		/*Para el O_RDONLY de el open*/
 #include <stdlib.h>		//para usar el exit y el free
 
 # define SIZE 50
+
+/*OJO QUE TENEMOS POR AHI UN .TXT QUE TENEMOS QUE BORRAR O MOVER*/
 /*Estructura para la tener diferentes variables en imgs*/
 typedef struct
 {
@@ -50,6 +52,8 @@ typedef struct
 	int		s_pos;		//start pos, tiene que ser 1
 	int		n_pos;
 
+	int		exit_px;
+	int		exit_py;
 	int		col;
 	int		exit;
 

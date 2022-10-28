@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:45:39 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/26 18:13:15 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:49:07 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,13 @@ int ft_only_chars(t_vars *vars)
 	return (0);
 }
 
+static void get_exit_data(int y, int x, t_vars *vars)
+{
+	vars->exit = vars->exit + 1;
+	vars->exit_px = y;
+	vars->exit_py = x;
+}
+
 /*Funcion para revisar que solo haya 1 Exit y 1 posicion inicial*/
 int	ft_check_chars(t_vars *vars)
 {
@@ -77,7 +84,7 @@ int	ft_check_chars(t_vars *vars)
 			if (vars->map[y][x] == 'C')
 				vars->col = vars->col + 1;
 			else if (vars->map[y][x] == 'E')
-				vars->exit = vars->exit + 1;
+				get_exit_data(y, x, vars);
 			else if (vars->map[y][x] == 'P')
 			{
 				vars->s_pos = vars->s_pos + 1;
@@ -88,7 +95,7 @@ int	ft_check_chars(t_vars *vars)
 		}
 		y++;
 	}
-	if (vars->exit == 1 && vars->s_pos == 1)
+	if (vars->exit == 1 && vars->s_pos == 1 && vars->col > 1)
 		return (0);
 	else
 		return (1);

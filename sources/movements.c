@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:27:36 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/26 20:07:22 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/28 21:20:00 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void now_move_up_down(t_vars *vars)
 	if (vars->n_pos == 'W')
 	{
 		vars->counter = vars->counter + 1;
-		printf("moves counter: %i\n", vars->counter);	
+		ft_printf("moves counter: %i\n", vars->counter);
 		vars->map[vars->px][vars->py] = '0';
 		vars->px =  vars->px - 1;
 		vars->map[vars->px][vars->py] = 'P';
@@ -32,7 +32,7 @@ void now_move_up_down(t_vars *vars)
 	else if (vars->n_pos == 'S')
 	{
 		vars->counter = vars->counter + 1;
-		printf("moves counter: %i\n", vars->counter);
+		ft_printf("moves counter: %i\n", vars->counter);
 		vars->map[vars->px][vars->py] = '0';
 		vars->px = vars->px + 1;
 		vars->map[vars->px][vars->py] = 'P';
@@ -45,7 +45,7 @@ void now_move_iz_dr(t_vars *vars)
 	if (vars->n_pos == 'A')
 	{
 		vars->counter = vars->counter +  1;
-		printf("moves counter: %i\n", vars->counter);
+		ft_printf("moves counter: %i\n", vars->counter);
 		vars->map[vars->px][vars->py] = '0';
 		vars->py =  vars->py - 1;
 		vars->map[vars->px][vars->py] = 'P';
@@ -54,7 +54,7 @@ void now_move_iz_dr(t_vars *vars)
 	else if (vars->n_pos == 'D')
 	{
 		vars->counter = vars->counter + 1;
-		printf("moves counter: %i\n", vars->counter);
+		ft_printf("moves counter: %i\n", vars->counter);
 		vars->map[vars->px][vars->py] = '0';
 		vars->py =  vars->py + 1;
 		vars->map[vars->px][vars->py] = 'P';
@@ -64,10 +64,8 @@ void now_move_iz_dr(t_vars *vars)
 
 int is_finished(t_vars *vars)
 {
-	if (vars->col == 0 && (vars->map[vars->px - 1][vars->py] == 'E'
-			|| vars->map[vars->px + 1][vars->py] == 'E'
-			|| vars->map[vars->px][vars->py - 1] == 'E'
-			|| vars->map[vars->px][vars->py + 1] == 'E'))
+
+	if (vars->col == 0 && (vars->map[vars->px][vars->py] == vars->map[vars->exit_px][vars->exit_py]))
 		return (0);
 	return (1);
 }
@@ -95,23 +93,23 @@ int which_key(int key_symbol)
  * ese parametro lo pasamos a la funcion which_key.
  * Si lo que devulve la funcion es un -1 salimos del programa de forma limpia.*/
 int player_movs(int key_symbol, t_vars *vars)
-{
-	//printf("the key:%i", key_symbol);
+{	
+	//ft_printf("the key:%i", key_symbol);
 	vars->n_pos = which_key(key_symbol);
 	if (vars->n_pos < 0)
 		free_memory(vars);
-//	printf("tecla: %c coleccionables: %i\n", vars->n_pos, vars->col);
+//	ft_printf("tecla: %c coleccionables: %i\n", vars->n_pos, vars->col);
+	if (is_finished(vars) == 0)
+	{
+		mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 10, vars->py + 10, 0x0000FF00 , "YOU WON!!!");	
+		return (0);
+	}
 	if (must_not_move(vars) == -1)
 	{
 		//printf("han habido problemas\n");
 		return (-1);
 	}
-	if (is_finished(vars) == 0)
-	{
-		mlx_string_put(vars->mlx, vars->win_ptr, vars->px, vars->py, 0x0000FF00 , "YOU WON!!!");	
-		return (0);
-	}
-	//printf("col: %i\n", vars->col);
+	//ft_printf("col: %i\n", vars->col);
 	now_move_up_down(vars);
 	now_move_iz_dr(vars);
 	print_game_map(vars);

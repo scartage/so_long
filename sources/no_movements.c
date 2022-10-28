@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:31:10 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/26 21:28:14 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/28 21:14:28 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int must_not_W(t_vars *vars)
 	{
 		if (vars->col != 0)
 		{
-			mlx_string_put(vars->mlx, vars->win_ptr, vars->px, vars->py, 0x0000FF00 , "take first all the collectibles");
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 5, vars->py + 10, 0x0000FF00 , "take first all the collectibles");
 			return (-1);	
 		}
 	}
@@ -42,7 +42,7 @@ static int must_not_S(t_vars *vars)
 	{
 		if (vars->col != 0)
 		{
-			mlx_string_put(vars->mlx, vars->win_ptr, vars->px, vars->py, 0x0000FF00 , "take first all the collectibles");
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 5, vars->py + 10, 0x0000FF00 , "take first all the collectibles");
 			return (-1);
 		}
 	}
@@ -63,7 +63,7 @@ static int must_not_A(t_vars *vars)
 	{
 		if (vars->col != 0)
 		{
-			mlx_string_put(vars->mlx, vars->win_ptr, vars->px, vars->py, 0x0000FF00 , "take first all the collectibles");
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px+ 5, vars->py + 10, 0x0000FF00 , "take first all the collectibles");
 			return (-1);
 		}
 	}
@@ -83,7 +83,7 @@ static int must_not_D(t_vars *vars)
 	{
 		if (vars->col != 0)
 		{
-			mlx_string_put(vars->mlx, vars->win_ptr, vars->px, vars->py, 0x0000FF00 , "take first all the collectibles");
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 5, vars->py + 10, 0x0000FF00 , "take first all the collectibles");
 			return (-1);
 		}
 	}

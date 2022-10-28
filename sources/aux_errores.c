@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:18:28 by scartage          #+#    #+#             */
-/*   Updated: 2022/10/18 20:24:36 by scartage         ###   ########.fr       */
+/*   Updated: 2022/10/28 17:56:53 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_perror(char *str)
 
 void ft_perror_map()
 {
-	char *msm = "Error: Mapa incorrecto.\nRecuerde que los unicos caracteres validos son {0, 1, C, E, P}.\nAdemas, solo puede haber 1 salida y 1 posicion incial.\nTambien puede revisar que el mapa no tenga saltos de linea incorrectos o el que el mapa este vacio\n";
+	char *msm = "Error: Mapa incorrecto.\nRecuerde que los unicos caracteres validos son {0, 1, C, E, P}.\nAdemas, solo puede haber 1 salida, 1 posicion incial y al menos un colecionable.\nTambien puede revisar que el mapa no tenga saltos de linea incorrectos o el que el mapa este vacio\n";
 
 	ft_perror(msm);
 }
