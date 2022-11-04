@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_all.c                                         :+:      :+:    :+:   */
+/*   free_all_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 16:03:54 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:37:23 by scartage         ###   ########.fr       */
+/*   Created: 2022/11/03 18:22:21 by scartage          #+#    #+#             */
+/*   Updated: 2022/11/03 18:22:25 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 /*funcion para cerrar la ventana y salir del programa*/
-void	destroy_img(t_vars *vars)
+void destroy_img(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win_ptr);
 	exit (0);
 }
 
 /*Funcion para liberar de manera "limpia" */
-void	ft_clean_map(t_vars *vars)
+void ft_clean_map(t_vars *vars)
 {
-	int	alto;
+	int alto;
 
 	alto = vars->height;
 	if (vars->map)
@@ -37,10 +37,10 @@ void	ft_clean_map(t_vars *vars)
 	}
 }
 
-void	ft_clean_map_copy(t_vars *vars)
+void ft_clean_map_copy(t_vars *vars)
 {
-	int	i;
-	int	alto;
+	int i;
+	int alto;
 
 	i = 0;
 	alto = vars->height + 1;
@@ -59,7 +59,7 @@ void	ft_clean_map_copy(t_vars *vars)
  * si existe un copy lo liberamos.
  * liberamos el puntero de las imagenes
  * y por ultimo destruimos la window*/
-int	free_memory(t_vars *vars)
+int free_memory(t_vars *vars)
 {
 	if (vars->map)
 		ft_clean_map(vars);

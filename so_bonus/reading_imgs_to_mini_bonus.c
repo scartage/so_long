@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reading_imgs_to_mini.c                             :+:      :+:    :+:   */
+/*   reading_imgs_to_mini_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 20:02:09 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:43:30 by scartage         ###   ########.fr       */
+/*   Created: 2022/11/03 18:21:27 by scartage          #+#    #+#             */
+/*   Updated: 2022/11/04 18:17:14 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	keep_reading_imgs(t_vars *vars, int height, int width)
 {
@@ -29,11 +29,12 @@ void	keep_reading_imgs(t_vars *vars, int height, int width)
 
 void	reading_imgs(t_vars *vars)
 {
-	int	height;
-	int	width;
+	int	height;		//alto_img
+	int width;		//ancho_img
 
 	vars->imgs = malloc(sizeof(t_img) * (8));
-	
+	if (vars->imgs == NULL)
+		ft_perror("Error: fallo de memoria en malloc de reading_imgs");
 	vars->imgs[0].img_ptr = mlx_xpm_file_to_image(vars->mlx, "imagenes/img_for_final/pared.xpm", &width, &height);
 	vars->imgs[0].data = mlx_get_data_addr(vars->imgs[0].img_ptr, &vars->imgs[0].bpp, &vars->imgs[0].size, &vars->imgs[0].endian);
 

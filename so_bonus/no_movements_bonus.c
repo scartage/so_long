@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   no_movements.c                                     :+:      :+:    :+:   */
+/*   no_movements_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 18:31:10 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:42:41 by scartage         ###   ########.fr       */
+/*   Created: 2022/11/03 18:23:22 by scartage          #+#    #+#             */
+/*   Updated: 2022/11/03 18:23:25 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 /*Se mira que hacia arriba (la W va para arriba) no hayan paredes o salidas, 
  * en caso de que haya un coleccionable lo "toma"*/
-static int	must_not_W(t_vars *vars)
+static int must_not_W(t_vars *vars)
 {
 	if (vars->map[vars->px - 1][vars->py] == '1')
 		return (-1);
@@ -31,7 +31,7 @@ static int	must_not_W(t_vars *vars)
 		vars->col--;
 		return (0);
 	}
-	return (0);
+	return (0);		//En caso de que no haya pared, ni salida ni coleccionable, solo devuelve un 0
 }
 
 static int must_not_S(t_vars *vars)
@@ -101,22 +101,22 @@ static int must_not_D(t_vars *vars)
  * lo "tomara" y se le restaran colecionables a la variable vars->col*/
 int must_not_move(t_vars *vars)
 {
-	if (vars->n_pos == 'W')
+	if (vars->n_pos == 'W')		//arriba
 	{
 		if (must_not_W(vars) == -1)
 			return (-1);
 	}
-	else if (vars->n_pos == 'S')
+	else if (vars->n_pos == 'S') //Abajo
 	{
 		if (must_not_S(vars) == -1)
 			return (-1);
 	}
-	else if (vars->n_pos == 'A')
+	else if (vars->n_pos == 'A') //Izquiera
 	{
 		if (must_not_A(vars) == -1)
 			return (-1);
 	}
-	else if (vars->n_pos == 'D')
+	else if (vars->n_pos == 'D') //derecha
 	{
 		if (must_not_D(vars) == -1)
 			return (-1);

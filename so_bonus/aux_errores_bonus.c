@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux_errores.c                                      :+:      :+:    :+:   */
+/*   aux_errores_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 19:18:28 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:24:28 by scartage         ###   ########.fr       */
+/*   Created: 2022/11/03 18:19:24 by scartage          #+#    #+#             */
+/*   Updated: 2022/11/03 18:19:34 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	ft_put_cherror(char c)
 {
@@ -35,15 +35,9 @@ int	ft_perror(char *str)
 	exit(-1);
 }
 
-void	ft_perror_map(void)
+void ft_perror_map()
 {
-	char	*msm;
+	char *msm = "Error: Mapa incorrecto.\nRecuerde que los unicos caracteres validos son {0, 1, C, E, P}.\nAdemas, solo puede haber 1 salida, 1 posicion incial y al menos un colecionable.\nTambien puede revisar que el mapa no tenga saltos de linea incorrectos o el que el mapa este vacio\n";
 
-	msm = "Error: Mapa incorrecto.\n \
-	Recuerde que los unicos caracteres validos \
-	son {0, 1, C, E, P}.\nAdemas, solo puede haber\
-	 1 salida, 1 posicion incial y al menos un colecionable. \
-	 \nTambien puede revisar que el mapa no tenga saltos de linea\
-	  incorrectos o el que el mapa este vacio\n";
 	ft_perror(msm);
 }

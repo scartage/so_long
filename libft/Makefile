@@ -6,7 +6,7 @@
 #    By: scartage <scartage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 15:11:31 by scartage          #+#    #+#              #
-#    Updated: 2022/07/07 17:10:53 by scartage         ###   ########.fr        #
+#    Updated: 2022/11/04 19:16:52 by scartage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS	 = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 			ft_strnstr.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c	\
 			ft_strtrim.c ft_split.c  ft_itoa.c ft_strmapi.c ft_striteri.c	\
 			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c	\
-			ft_counting_words.c ft_check_atoi.c ft_strcmp.c ft_strequal.c
+			ft_counting_words.c ft_check_atoi.c ft_strcmp.c ft_strequal.c	\
+			ft_realloc.c
 
 BNUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c \
 			ft_lstlast.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c 		\

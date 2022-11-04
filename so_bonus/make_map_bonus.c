@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_map.c                                         :+:      :+:    :+:   */
+/*   make_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 17:55:37 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:40:03 by scartage         ###   ########.fr       */
+/*   Created: 2022/11/03 18:20:29 by scartage          #+#    #+#             */
+/*   Updated: 2022/11/03 18:20:38 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 /*Funcion para saber cuantas lineas del mapa hay con info*/
-int	count_array(char **array)
+int count_array(char **array)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (array[i] != NULL)
@@ -27,13 +27,13 @@ int	count_array(char **array)
  * devolverlo y poner la info en el mapa "real"*/
 char	**push(char **array, char *str)
 {
-	int		i;
-	int		x;
+	int i;
+	int x;
 	char	**new;
 
 	i = 0;
 	x = count_array(array);
-	new = ft_calloc(sizeof(char *), x + 2);
+	new = ft_calloc(sizeof(char *),  x + 2);
 	if (new == NULL)
 		ft_perror("Error: fallo de memoria en map aux (new)\n");
 	while (i < x)
@@ -43,13 +43,13 @@ char	**push(char **array, char *str)
 	}
 	new[i] = str;
 	free(array);
-	return (new);
+	return(new);
 }
 
 /*Funcion encargada de revisar si la extension del archivo es correcta*/
-void	ft_check_ext_file(char *file)
+void ft_check_ext_file(char *file)
 {
-	int	len;
+	int len;
 
 	len = ft_strlen(file);
 	if (ft_strnstr(&file[len - 4], ".ber", 4) == 0)

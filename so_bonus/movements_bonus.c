@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements.c                                        :+:      :+:    :+:   */
+/*   movements_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
+/*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 17:27:36 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:42:28 by scartage         ###   ########.fr       */
+/*   Created: 2022/11/03 18:23:03 by scartage          #+#    #+#             */
+/*   Updated: 2022/11/03 18:23:07 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 /*Con esta funcion lo que hacemos es poner en 0 la poscion actual donde estoy
  * para sumarle o restarte una pos segun a donde quiero ir.
@@ -18,7 +18,7 @@
  * vuelva a hacer el recorrido muestre al personaje en la nueva posicion.
  * Hay que definir player, para que cuando el printf ponga las imagenes sea acorde a la
  * direccion a donde se quiere mover.*/
-void	now_move_up_down(t_vars *vars)
+void now_move_up_down(t_vars *vars)
 {
 	if (vars->n_pos == 'W')
 	{
@@ -40,14 +40,14 @@ void	now_move_up_down(t_vars *vars)
 	}
 }
 
-void	now_move_iz_dr(t_vars *vars)
+void now_move_iz_dr(t_vars *vars)
 {
 	if (vars->n_pos == 'A')
 	{
-		vars->counter = vars->counter + 1;
+		vars->counter = vars->counter +  1;
 		ft_printf("moves counter: %i\n", vars->counter);
 		vars->map[vars->px][vars->py] = '0';
-		vars->py = vars->py - 1;
+		vars->py =  vars->py - 1;
 		vars->map[vars->px][vars->py] = 'P';
 		vars->player = 'A';
 	}
@@ -62,11 +62,10 @@ void	now_move_iz_dr(t_vars *vars)
 	}
 }
 
-int	is_finished(t_vars *vars)
+int is_finished(t_vars *vars)
 {
 
-	if (vars->col == 0 && (vars->map[vars->px][vars->py] \
-		== vars->map[vars->exit_px][vars->exit_py]))
+	if (vars->col == 0 && (vars->map[vars->px][vars->py] == vars->map[vars->exit_px][vars->exit_py]))
 		return (0);
 	return (1);
 }
@@ -74,10 +73,8 @@ int	is_finished(t_vars *vars)
  * a la izquierda estan los "codigos numericos" para las letras (AWDS)
  * y a la derecha los "codigos numerico" de las flechas. 
  * Segun lo que se pulse se da un valor. 
- * En caso de ser pulsado el ESC devolvemos un -1
- *  y nos sacar del programa de forma limpia*/
-
-int	which_key(int key_symbol)
+ * En caso de ser pulsado el ESC devolvemos un -1 y nos sacar del programa de forma limpia*/
+int which_key(int key_symbol)
 {
 	if (key_symbol == 13 || key_symbol == 126)
 		return ('W');
@@ -94,9 +91,8 @@ int	which_key(int key_symbol)
 
 /*La funcion recibe un parametro (key_symbol) avisando se ha pulsado una letra.
  * ese parametro lo pasamos a la funcion which_key.
- * Si lo que devulve la funcion es un -1 salimos 
- * del programa de forma limpia.*/
-int	player_movs(int key_symbol, t_vars *vars)
+ * Si lo que devulve la funcion es un -1 salimos del programa de forma limpia.*/
+int player_movs(int key_symbol, t_vars *vars)
 {	
 	//ft_printf("the key:%i", key_symbol);
 	vars->n_pos = which_key(key_symbol);
