@@ -6,7 +6,7 @@
 #    By: scartage <scartage@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 15:40:55 by scartage          #+#    #+#              #
-#    Updated: 2022/11/03 19:19:56 by scartage         ###   ########.fr        #
+#    Updated: 2022/11/11 21:52:25 by scartage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS_bonus = main_bonus.c aux_errores_bonus.c get_next_line.c \
 			 get_next_line_utils.c make_map_bonus.c check_map_bonus.c \
 			 check_playable_bonus.c reading_imgs_to_mini_bonus.c \
 			 map_functions_bonus.c movements_bonus.c no_movements_bonus.c\
+			 aux_func_movements_bonus.c aux_funtions_bonus.c	\
 			 free_all_bonus.c ft_printf.c ft_print_args.c ft_printf_tools.c
 
 INCLUDES 	= libft/libft.a minilibx_macos/libmlx.a sources/ft_printf/libftprintf.a

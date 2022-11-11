@@ -6,16 +6,18 @@
 /*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 17:45:39 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:45:15 by scartage         ###   ########.fr       */
+/*   Updated: 2022/11/11 20:18:01 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* Funcion que recorre el mapa para ver si es rectangular
- * se recorre por lineas de alto, comparando que size (el ancho) sea igual
- * a la forma en la que se saca el ancho. Si en algun momento es diferente es porque
- * hay un error. El ancho NO puede ser igual alto, porque seria un cuadrado.*/
+/* Funcion que recorre el mapa para ver si es*/
+/*rectangular se recorre por lineas de alto*/
+/*comparando que size (el ancho) sea igual*/
+/* a la forma en la que se saca el ancho.*/
+/*Si en algun momento es diferente es porque*/
+/* hay un error. El ancho NO puede ser igual alto, porque seria un cuadrado.*/
 int	ft_is_rectangle(t_vars *vars)
 {
 	size_t	size;

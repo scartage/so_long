@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:31:10 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:42:41 by scartage         ###   ########.fr       */
+/*   Updated: 2022/11/11 21:07:00 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*Se mira que hacia arriba (la W va para arriba) no hayan paredes o salidas, 
  * en caso de que haya un coleccionable lo "toma"*/
-static int	must_not_W(t_vars *vars)
+static int	must_not_w(t_vars *vars)
 {
 	if (vars->map[vars->px - 1][vars->py] == '1')
 		return (-1);
@@ -22,8 +22,9 @@ static int	must_not_W(t_vars *vars)
 	{
 		if (vars->col != 0)
 		{
-			mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 5, vars->py + 10, 0x0000FF00 , "take first all the collectibles");
-			return (-1);	
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 5, \
+				vars->py + 10, 0x0000FF00, "take first all the collectibles");
+			return (-1);
 		}
 	}
 	else if (vars->map[vars->px - 1][vars->py] == 'C')
@@ -34,7 +35,7 @@ static int	must_not_W(t_vars *vars)
 	return (0);
 }
 
-static int must_not_S(t_vars *vars)
+static int	must_not_s(t_vars *vars)
 {
 	if (vars->map[vars->px + 1][vars->py] == '1')
 		return (-1);
@@ -42,7 +43,8 @@ static int must_not_S(t_vars *vars)
 	{
 		if (vars->col != 0)
 		{
-			mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 5, vars->py + 10, 0x0000FF00 , "take first all the collectibles");
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 5, \
+				vars->py + 10, 0x0000FF00, "take first all the collectibles");
 			return (-1);
 		}
 	}
@@ -52,10 +54,9 @@ static int must_not_S(t_vars *vars)
 		return (0);
 	}
 	return (0);
-
 }
 
-static int must_not_A(t_vars *vars)
+static int	must_not_a(t_vars *vars)
 {
 	if (vars->map[vars->px][vars->py - 1] == '1')
 		return (-1);
@@ -63,7 +64,8 @@ static int must_not_A(t_vars *vars)
 	{
 		if (vars->col != 0)
 		{
-			mlx_string_put(vars->mlx, vars->win_ptr, vars->px+ 5, vars->py + 10, 0x0000FF00 , "take first all the collectibles");
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 5, \
+				vars->py + 10, 0x0000FF00, "take first all the collectibles");
 			return (-1);
 		}
 	}
@@ -75,7 +77,7 @@ static int must_not_A(t_vars *vars)
 	return (0);
 }
 
-static int must_not_D(t_vars *vars)
+static int	must_not_d(t_vars *vars)
 {
 	if (vars->map[vars->px][vars->py + 1] == '1')
 		return (-1);
@@ -83,7 +85,8 @@ static int must_not_D(t_vars *vars)
 	{
 		if (vars->col != 0)
 		{
-			mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 5, vars->py + 10, 0x0000FF00 , "take first all the collectibles");
+			mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 5, \
+				vars->py + 10, 0x0000FF00, "take first all the collectibles");
 			return (-1);
 		}
 	}
@@ -99,26 +102,26 @@ static int must_not_D(t_vars *vars)
  * NO puede pasar paredes y tampoco puede estar "cerca" de la salida
  * en caso que (segun baje, suba o se mueva para los lados) haya un coleccionable
  * lo "tomara" y se le restaran colecionables a la variable vars->col*/
-int must_not_move(t_vars *vars)
+int	must_not_move(t_vars *vars)
 {
 	if (vars->n_pos == 'W')
 	{
-		if (must_not_W(vars) == -1)
+		if (must_not_w(vars) == -1)
 			return (-1);
 	}
 	else if (vars->n_pos == 'S')
 	{
-		if (must_not_S(vars) == -1)
+		if (must_not_s(vars) == -1)
 			return (-1);
 	}
 	else if (vars->n_pos == 'A')
 	{
-		if (must_not_A(vars) == -1)
+		if (must_not_a(vars) == -1)
 			return (-1);
 	}
 	else if (vars->n_pos == 'D')
 	{
-		if (must_not_D(vars) == -1)
+		if (must_not_d(vars) == -1)
 			return (-1);
 	}
 	return (0);

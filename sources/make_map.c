@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:55:37 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:40:03 by scartage         ###   ########.fr       */
+/*   Updated: 2022/11/11 20:31:09 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,11 @@ void	ft_check_ext_file(char *file)
 /*funcion para leer el mapa y guardalor en vars->map*/
 char	**read_file(char *file)
 {
-	int i;
-	int fd;
-	char **map;
-	char *line;
-	
-	ft_check_ext_file(file);
+	int		i;
+	int		fd;
+	char	**map;
+	char	*line;
+
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_perror("Error: problema con el mapa\n");
@@ -72,7 +71,7 @@ char	**read_file(char *file)
 	if (map == NULL)
 		ft_perror("Error: fallo de memoria en el malloc de map\n");
 	i = 0;
-	while(1)
+	while (1)
 	{
 		line = get_next_line(fd);
 		if (i == 0 && line == NULL)
@@ -80,7 +79,7 @@ char	**read_file(char *file)
 		if (line != NULL)
 			map = push(map, line);
 		else
-			break;
+			break ;
 		i++;
 	}
 	close (fd);

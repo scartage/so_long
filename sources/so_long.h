@@ -6,7 +6,7 @@
 /*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 19:07:23 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:45:05 by scartage         ###   ########.fr       */
+/*   Updated: 2022/11/11 21:55:37 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 
 /*OJO QUE TENEMOS POR AHI UN .TXT QUE TENEMOS QUE BORRAR O MOVER*/
 /*Estructura para la tener diferentes variables en imgs*/
+
+/*OJO arreglar el que cuando el jugador este en la salida aparzca
+ * el mensaje de you won sin que tenga que moverse*/
 typedef struct s_truct
 {
 	void	*img_ptr;
@@ -68,10 +71,9 @@ typedef struct s_vars
 /*Funcion auxiliar para casos de errores
  * ft_perror es para errores generales,
  * ft_perror_map para mapas invalidos*/
-int	ft_perror(char	*str);
-int	count_array(char **array);
-
-void ft_perror_map(void);
+int		ft_perror(char	*str);
+int		count_array(char **array);
+void	ft_perror_map(void);
 
 /*Funciones para leer el file y crear el mapa*/
 char	**read_file(char *in_map);
@@ -88,19 +90,19 @@ int		ft_check_chars(t_vars *vars);
 int		ft_inside_one(t_vars *vars);
 int		ft_is_rectangle(t_vars *vars);
 void	get_exit_data(int y, int x, t_vars *vars);
-
+void	ft_check_ext_file(char *file);
 /*para revisar que el mapa sea jugable*/
 int		ft_is_playable(t_vars	*vars);
 void	validate_path(t_vars *vars, int px, int py);
 
 /*funciones varias pasa usar con el mapa y la minilibx*/
-int print_game_map(t_vars *vars);
-int player_movs(int key_symbol, t_vars *vars);
-int which_key(int key_symbol);
-int must_not_move(t_vars *vars);
+int		print_game_map(t_vars *vars);
+int		player_movs(int key_symbol, t_vars *vars);
+int		which_key(int key_symbol);
+int		must_not_move(t_vars *vars);
 
 /*Funciones para liberar*/
-int free_memory(t_vars *vars);
-void ft_clean_map_copy(t_vars *vars);
-void clean_map(t_vars *vars);
+int		free_memory(t_vars *vars);
+void	ft_clean_map_copy(t_vars *vars);
+void	clean_map(t_vars *vars);
 #endif

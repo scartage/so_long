@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scartage <scartage@student.42barcel>       +#+  +:+       +#+        */
+/*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:37:27 by scartage          #+#    #+#             */
-/*   Updated: 2022/05/04 18:38:42 by scartage         ###   ########.fr       */
+/*   Updated: 2022/11/11 20:49:04 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*get_line(int fd)
 	int		checker;
 
 	checker = 0;
-	aux =  malloc((BUFFER_SIZE + 1) * sizeof(char));
+	aux = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (aux == NULL)
 		return (NULL);
 	checker = read(fd, aux, BUFFER_SIZE);

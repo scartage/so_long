@@ -6,17 +6,20 @@
 /*   By: scartage <scartage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:27:36 by scartage          #+#    #+#             */
-/*   Updated: 2022/11/03 19:42:28 by scartage         ###   ########.fr       */
+/*   Updated: 2022/11/11 22:56:37 by scartage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*Con esta funcion lo que hacemos es poner en 0 la poscion actual donde estoy
- * para sumarle o restarte una pos segun a donde quiero ir.
- * una vez tengo la nueva "direccion" la defino como pos incial, asi cuando print_map
- * vuelva a hacer el recorrido muestre al personaje en la nueva posicion.
- * Hay que definir player, para que cuando el printf ponga las imagenes sea acorde a la
+/*Con esta funcion lo que hacemos es poner en 
+ * 0 la poscion actual donde estoy
+ * para sumarle o restarte una pos segun a donde quiero ir.*/
+/* una vez tengo la nueva "direccion" la defino como pos 
+  * incial, asi cuando print_map
+  * vuelva a hacer el recorrido muestre al personaje en la nueva posicion.*/
+/* Hay que definir player, para que cuando el printf 
+ *ponga las imagenes sea acorde a la
  * direccion a donde se quiere mover.*/
 void	now_move_up_down(t_vars *vars)
 {
@@ -25,7 +28,7 @@ void	now_move_up_down(t_vars *vars)
 		vars->counter = vars->counter + 1;
 		ft_printf("moves counter: %i\n", vars->counter);
 		vars->map[vars->px][vars->py] = '0';
-		vars->px =  vars->px - 1;
+		vars->px = vars->px - 1;
 		vars->map[vars->px][vars->py] = 'P';
 		vars->player = 'W';
 	}
@@ -56,7 +59,7 @@ void	now_move_iz_dr(t_vars *vars)
 		vars->counter = vars->counter + 1;
 		ft_printf("moves counter: %i\n", vars->counter);
 		vars->map[vars->px][vars->py] = '0';
-		vars->py =  vars->py + 1;
+		vars->py = vars->py + 1;
 		vars->map[vars->px][vars->py] = 'P';
 		vars->player = 'D';
 	}
@@ -64,7 +67,6 @@ void	now_move_iz_dr(t_vars *vars)
 
 int	is_finished(t_vars *vars)
 {
-
 	if (vars->col == 0 && (vars->map[vars->px][vars->py] \
 		== vars->map[vars->exit_px][vars->exit_py]))
 		return (0);
@@ -83,7 +85,7 @@ int	which_key(int key_symbol)
 		return ('W');
 	else if (key_symbol == 1 || key_symbol == 125)
 		return ('S');
-	else if (key_symbol == 0 || key_symbol == 123 )
+	else if (key_symbol == 0 || key_symbol == 123)
 		return ('A');
 	else if (key_symbol == 2 || key_symbol == 124)
 		return ('D');
@@ -97,25 +99,26 @@ int	which_key(int key_symbol)
  * Si lo que devulve la funcion es un -1 salimos 
  * del programa de forma limpia.*/
 int	player_movs(int key_symbol, t_vars *vars)
-{	
-	//ft_printf("the key:%i", key_symbol);
+{
 	vars->n_pos = which_key(key_symbol);
 	if (vars->n_pos < 0)
 		free_memory(vars);
-//	ft_printf("tecla: %c coleccionables: %i\n", vars->n_pos, vars->col);
 	if (is_finished(vars) == 0)
 	{
-		mlx_string_put(vars->mlx, vars->win_ptr, vars->px + 10, vars->py + 10, 0x0000FF00 , "YOU WON!!!");	
+		mlx_string_put(vars->mlx, vars->win_ptr, \
+			vars->px + 10, vars->py + 10, 0x0000FF00, "YOU WON!!!");
 		return (0);
 	}
 	if (must_not_move(vars) == -1)
-	{
-		//printf("han habido problemas\n");
 		return (-1);
-	}
-	//ft_printf("col: %i\n", vars->col);
 	now_move_up_down(vars);
 	now_move_iz_dr(vars);
 	print_game_map(vars);
+	if (is_finished(vars) == 0)
+	{
+		mlx_string_put(vars->mlx, vars->win_ptr, \
+			vars->px + 10, vars->py + 10, 0x0000FF00, "YOU WON!!!");
+		return (0);
+	}
 	return (0);
 }
